@@ -1,6 +1,5 @@
 'use strict';
 
-
 define('forum/tags', ['forum/infinitescroll', 'alerts'], function (infinitescroll, alerts) {
     const Tags = {};
 
@@ -19,6 +18,12 @@ define('forum/tags', ['forum/infinitescroll', 'alerts'], function (infinitescrol
                 onTagsLoaded(results.tags, true);
             });
         }, 250));
+
+        // Clear search button
+        $('#clear-search').on('click', function () {
+            $('#tag-search').val('');
+            resetSearch();
+        });
 
         infinitescroll.init(Tags.loadMoreTags);
     };
